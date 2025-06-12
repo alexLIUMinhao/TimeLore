@@ -36,9 +36,18 @@
    - 关键词: 预测，少样本，零样本
 
 3. **TimeFilter: Patch-Specific Spatial-Temporal Graph Filtration for Time Series Forecasting**  
-   - 链接: [https://icml.cc/virtual/2025/poster/46502](https://icml.cc/virtual/2025/poster/46502)  
-   - 作者: Yifan Hu, Guibin Zhang, Peiyuan Liu, Disen Lan, Naiqi Li, Dawei Cheng, Tao Dai, Shutao Xia, Shirui Pan  
-   - 关键词: 预测，时空图，通道关系
+   - **链接**: [https://icml.cc/virtual/2025/poster/46502](https://icml.cc/virtual/2025/poster/46502)  
+   - **作者**: Yifan Hu, Guibin Zhang, Peiyuan Liu, Disen Lan, Naiqi Li, Dawei Cheng, Tao Dai, Shutao Xia, Shirui Pan  
+   - **关键词**: 预测，时空图，通道关系
+   - **Abstract**: Time series forecasting methods generally fall into two main categories: Channel Independent (CI) and Channel Dependent (CD) strategies. While CI overlooks important covariate relationships, CD captures all dependencies without distinction, introducing noise and reducing generalization. Recent advances in Channel Clustering (CC) aim to refine dependency modeling by grouping channels with similar characteristics and applying tailored modeling techniques. However, coarse-grained clustering struggles to capture complex, time-varying interactions effectively. To address these challenges, we propose TimeFilter, a GNN-based framework for adaptive and fine-grained dependency modeling. After constructing the graph from the input sequence, TimeFilter refines the learned spatial-temporal dependencies by filtering out irrelevant correlations while preserving the most critical ones in a patch-specific manner. Extensive experiments on 13 real-world datasets from diverse application domains demonstrate the state-of-the-art performance of TimeFilter. The code is available at https://github.com/TROUBADOUR000/TimeFilter.
+   - **动机**：现有多变量时间序列预测方法主要分为Channel Independent (CI) 和 Channel Dependent (CD) 两类。CI 方法忽视通道间相关性，CD 方法则盲目捕捉所有依赖，容易引入噪音，降低泛化能力。尽管通道聚类（Channel Clustering）提供了一些改进，但依然难以利用时变的模态间复杂交互。本论文提出：需要一种更细粒度、可以动态过滤噪音而非全量捕捉相关性的框架。
+   - **方法简述（Proposed Method）**：
+    - 论文提出了名为 TimeFilter 的新框架，采用图神经网络（GNN）在 patch 级别进行空间-时间依赖建模：
+    - Patch‑Specific Filtration：对每个 patch 构建 3 类自环子图（时空、空间、时间），利用 Mixture-of-Experts 和动态路由机制为每个 patch 自适应地过滤无关边缘，仅保留重要依赖；
+    - 自适应图学习 + GNN 聚合：使用图卷积在精炼后的依赖图上聚合信息，并最终进行未来预测；
+   - **实验设置与数据集**
+    - TimeFilter 在 13 个真实多变量时序数据集上测试，涵盖交通（PEMS 系列）、能源（Electricity、ETTh1/2、ETTm1/2）、医疗与金融等领域。结果显示，在长短期预测任务上均优于 CI/CD 和图神经多种基线模型，且 ablation 实验验证了 patch‑specific filer 与动态路由的关键作用。
+   ![TimeFilter](./img/TimeFilter.png "TimeFilter")
 
 4. **Enhancing Foundation Models for Time Series Forecasting via Wavelet-based Tokenization**  
    - 链接: [https://icml.cc/virtual/2025/poster/46131](https://icml.cc/virtual/2025/poster/46131)  
