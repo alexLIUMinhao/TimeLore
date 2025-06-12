@@ -28,7 +28,7 @@
    - **实验设置与数据集**
     - 时间序列预测（Forecasting）：PEMS（交通流量）、ETTh2, ETTm2（能源），Electricity 
     - 时间序列分类（Classification）：HAR（人体活动识别，来自可穿戴设备）、Epilepsy（癫痫发作 ECG 信号）、Sleep‑EEG（多通道 EEG 睡眠阶段分类
-   ![TimeDART](../img/TimeDART.png "TimeDART")
+   ![TimeDART](./img/TimeDART.png "TimeDART")
 
 2. **Towards a General Time Series Forecasting Model with Unified Representation and Adaptive Transfer**  
    - 链接: [https://icml.cc/virtual/2025/poster/46383](https://icml.cc/virtual/2025/poster/46383)  
