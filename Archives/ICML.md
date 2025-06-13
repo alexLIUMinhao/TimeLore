@@ -126,5 +126,222 @@
     - 作者: Adrien Cortes, Remi Rehm, Victor Letzelter  
     - 关键词: 预测，多元概率预测
 
+
 18. **Conditional Diffusion Model with Nonlinear Data Transformation for Time Series Forecasting**  
-    - 链接
+    - 链接: [https://icml.cc/virtual/2025/poster/44243](https://icml.cc/virtual/2025/poster/44243)  
+    - 作者: RISHI JINKA, Venkata Sai Mothish Gonugunta, Deepak N. Subramani  
+    - 关键词: 预测，非线性变换，条件扩散模型
+
+19. **Patch-wise Structural Loss for Time Series Forecasting**  
+    - 链接: [https://icml.cc/virtual/2025/poster/44030](https://icml.cc/virtual/2025/poster/44030)  
+    - 作者: Dilfira Kudrat, Zongxia Xie, Yanru Sun, Tianyu Jia, Qinghua Hu  
+    - 关键词: 预测，结构化损失
+
+20. **FSTLLM: Spatio-Temporal LLM for Few Shot Time Series Forecasting**  
+    - 链接: [https://icml.cc/virtual/2025/poster/44031](https://icml.cc/virtual/2025/poster/44031)  
+    - 作者: Yue Jiang, Yile Chen, Xiucheng Li, Qin Chao, SHUAI LIU, Gao Cong  
+    - 关键词: 预测，少样本，时空大模型
+
+21. **Non-stationary Diffusion For Probabilistic Time Series Forecasting**  
+    - 链接: [https://icml.cc/virtual/2025/poster/44783](https://icml.cc/virtual/2025/poster/44783)  
+    - 作者: Weiwei Ye, Zhuopeng Xu, Ning Gui  
+    - 关键词: 预测，概率预测，非平稳
+
+22. **VAE: A Koopman-Kalman Enhanced Variational AutoEncoder for Probabilistic Time Series Forecasting**  
+    - 链接: [https://icml.cc/virtual/2025/poster/46346](https://icml.cc/virtual/2025/poster/46346)  
+    - 作者: Xingjian Wu, Xiangfei Qiu, Hongfan Gao, Jilin Hu, Chenjuan Guo, Bin Yang  
+    - 关键词: 概率预测，变分自编码器，库普曼，卡尔曼
+
+23. **Shifting time: Time-series forecasting with Khatri-Rao neural operators**  
+    - 链接: [https://icml.cc/virtual/2025/poster/44565](https://icml.cc/virtual/2025/poster/44565)  
+    - 作者: Srinath Dama, Kevin L Course, Prasanth B Nair  
+    - 关键词: 时间序列建模、时空建模、时移算子、Khatri-Rao 神经算子、神经算子、算子学习
+
+24. **LangTime: A Language-Guided Unified Model for Time Series Forecasting with Proximal Policy Optimization**  
+    - 链接: [https://icml.cc/virtual/2025/poster/45059](https://icml.cc/virtual/2025/poster/45059)  
+    - 作者: Wenzhe Niu, Zongxia Xie, Yanru Sun, Wei He, Man Xu, Chao Hao  
+    - 关键词: 预测，语言模型，近端策略优化（PPO）
+
+25. **Retrieval Augmented Time Series Forecasting**  
+    - 链接: [https://icml.cc/virtual/2025/poster/45826](https://icml.cc/virtual/2025/poster/45826)  
+    - 作者: Sungwon Han, Seungeon Lee, MEEYOUNG CHA, Sercan Arik, Jinsung Yoon  
+    - 关键词: 预测，检索增强（RAG）
+
+26. **Temporal Query Network for Efficient Multivariate Time Series Forecasting**  
+    - 链接: [https://icml.cc/virtual/2025/poster/44603](https://icml.cc/virtual/2025/poster/44603)  
+    - 作者: Shengsheng Lin, Haojun Chen, Haijie Wu, Chunyun Qiu, Weiwei Lin  
+    - 关键词: 预测，时间查询，多元时间序列预测
+
+27. **A Closer Look at Transformers for Time Series Forecasting: Understanding Why They Work and Where They Struggle**  
+    - 链接: [https://icml.cc/virtual/2025/poster/44262](https://icml.cc/virtual/2025/poster/44262)  
+    - 作者: Yu Chen, Nathalia Céspedes, Payam Barnaghi  
+    - 关键词: 预测，Transformer
+
+28. **LightGTS: A Lightweight General Time Series Forecasting Model**  
+    - 链接: [https://icml.cc/virtual/2025/poster/44879](https://icml.cc/virtual/2025/poster/44879)  
+    - 作者: Yihang Wang, Yuying Qiu, Peng Chen, Yang Shu, Zhongwen Rao, Lujia Pan, Bin Yang, Chenjuan Guo  
+    - 关键词: 预测，轻量化
+
+29. **SKOLR: Structured Koopman Operator Linear RNN for Time-Series Forecasting**  
+    - 链接: [https://icml.cc/virtual/2025/poster/44949](https://icml.cc/virtual/2025/poster/44949)  
+    - 作者: Yitian Zhang, Liheng Ma, Antonios Valkanas, Boris Oreshkin, Mark Coates  
+    - 关键词: 预测，库普曼算子
+
+30. **WAVE: Weighted Autoregressive Varing Gate for Time Series Forecasting**  
+    - 链接: [https://icml.cc/virtual/2025/poster/45318](https://icml.cc/virtual/2025/poster/45318)  
+    - 作者: Jiecheng Lu, Xu Han, Yan Sun, Shihao Yang  
+    - 关键词: 预测，自回归
+
+31. **VisionTS: Visual Masked Autoencoders Are Free-Lunch Zero-Shot Time Series Forecasters**  
+    - 链接: [https://icml.cc/virtual/2025/poster/46441](https://icml.cc/virtual/2025/poster/46441)  
+    - 作者: Mouxiang Chen, Lefei Shen, Zhuo Li, Xiaoyun Wang, Jianling Sun, Chenghao Liu  
+    - 关键词: 预测，多模态
+
+32. **CMoS: Rethinking Time Series Prediction Through the Lens of Chunk-wise Spatial Correlations**  
+    - 链接: [https://icml.cc/virtual/2025/poster/44558](https://icml.cc/virtual/2025/poster/44558)  
+    - 作者: Haotian Si, Changhua Pei, Dan Pei, Gaogang Xie, Jianhui LI  
+    - 关键词: 预测，分块空间
+
+33. **IMTS is Worth Time Channel Patches: Visual Masked Autoencoders for Irregular Multivariate Time Series Prediction**  
+    - 链接: [https://icml.cc/virtual/2025/poster/46570](https://icml.cc/virtual/2025/poster/46570)  
+    - 作者: Zhangyi Hu, Jiemin Wu, Hua XU, Mingqian Liao, Ninghui Feng, Bo Gao, Songning Lai, Yutao Yue  
+    - 关键词: 预测，不规则时间序列
+
+### 异常检测相关
+1. **When Will It Fail?: Anomaly to Prompt for Forecasting Future Anomalies in Time Series**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45978](https://icml.cc/virtual/2025/poster/45978)  
+   - 作者: Min-Yeong Park, Won-Jeong Lee, Seong Tae Kim, Gyeong-Moon Park  
+   - 关键词: 异常检测，提示
+
+2. **Causality-Aware Contrastive Learning for Robust Multivariate Time-Series Anomaly Detection**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45960](https://icml.cc/virtual/2025/poster/45960)  
+   - 作者: HyunGi Kim, Jisoo Mok, Dong Jun Lee, Jaihyun Lew, Sungjae Sungjae, Sungroh Yoon  
+   - 关键词: 异常检测，因果感知
+   - **Abstract**: Utilizing the complex inter-variable causal relationships within multivariate time-series provides a promising avenue toward more robust and reliable multivariate time-series anomaly detection (MTSAD) but remains an underexplored area of research. This paper proposes CausalityAware contrastive learning for RObust multivariate Time-Series (CAROTS), a novel MTSAD pipeline that incorporates the notion of causality into contrastive learning. CAROTS employs two data augmentors to obtain causalitypreserving and -disturbing samples that serve as a wide range of normal variations and synthetic anomalies, respectively. With causalitypreserving and -disturbing samples as positives and negatives, CAROTS performs contrastive learning to train an encoder whose latent space separates normal and abnormal samples based on causality. Moreover, CAROTS introduces a similarity-filtered one-class contrastive loss that encourages the contrastive learning process to gradually incorporate more semantically diverse samples with common causal relationships. Extensive experiments on five real-world and two synthetic datasets validate that the integration of causal relationships endows CAROTS with improved MTSAD capabilities. The code is available at https://github.com/kimanki/CAROTS.
+   - **动机**：多变量时间序列异常检测（MTSAD）需要处理变量间复杂的因果关系，但现有方法往往忽视这一点，无法区分真正的异常信号与因果结构内部的波动。作者认为，将「因果意识」融入自监督对比学习，可以提升模型对异常和噪声的区分能力，从而获得更鲁棒、更可靠的检测效果。
+   - **方法简述（Proposed Method）**：
+    - 设计两种数据增强：保因果增强（preserving causal structure）与扰因果增强（disturbing causal links），分别生成“正常”与“异常”样本；
+    - 在对比学习框架中，将保因果样本视为正例，将扰因果样本作为负例，训练编码器在潜空间中将异常与正常样本分开；
+    - 引入 similarity‑filtered one‑class contrastive loss，鼓励编码器逐步纳入与主要因果结构一致的多样正样本，从而提升泛化能力
+   - **训练目标**
+    - 使用扩散损失替代单纯 MSE，避免自动回归模型对高斯偏差的假设，允许对多模态分布更丰富建模 ；
+    - 同时训练 autoregressive 与 diffusion 任务，以一致的特征学习目标提升表征质量。
+   - **实验设置与数据集**
+    - CAROTS 在 5 个真实世界 MTS 数据集（如传感器监控、工业设备、IT 运维等）和 2 个合成数据集 上进行测试，均取得了对比同类方法更高的精度和鲁棒性。SWaT：Secure Water Treatment（新加坡科技设计大学工业控制系统用水处理数据集）；WADI：Water Distribution（同 SWaT 来源，用于水分布网络监控）；PSM：某工业设备监控系统数据集；MSL：航天系统监控数据集（Mars Surface Logistics，Hundman 等人）；SMD：Server Machine Dataset，来自服务器运维监控
+   ![CAROTS](./img/CAROTS.png "CAROTS")
+
+
+3. **KAN-AD: Time Series Anomaly Detection with Kolmogorov–Arnold Networks**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45584](https://icml.cc/virtual/2025/poster/45584)  
+   - 作者: Quan Zhou, Changhua Pei, Fei Sun, Jianhui LI, haiming zhang, Gaogang Xie, Dan Pei, Zhengwei Gao, HanJing  
+   - 关键词: 异常检测，KAN
+
+### 分类相关
+1. **Learning Soft Sparse Shapes for Efficient Time-Series Classification**  
+   - 链接: [https://icml.cc/virtual/2025/poster/46130](https://icml.cc/virtual/2025/poster/46130)  
+   - 作者: Zhen Liu, Yicheng Luo, Boyuan Li, Emadeldeen Eldele, Min Wu, Qianli Ma  
+   - 关键词: 分类，高效性
+
+2. **FIC-TSC: Learning Time Series Classification with Fisher Information Constraint**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45977](https://icml.cc/virtual/2025/poster/45977)  
+   - 作者: Xiwen Chen, Wenhui Zhu, Peijie Qiu, Hao Wang, Huayu Li, ZIHAN LI, Yalin Wang, Aristeidis Sotiras, Abolfazl Razi  
+   - 关键词: 分类
+
+3. **Spectral-Aware Reservoir Computing for Fast and Accurate Time Series Classification**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45987](https://icml.cc/virtual/2025/poster/45987)  
+   - 作者: Shikang Liu, Chuyang Wei, Xiren Zhou, Huanhuan Chen  
+   - 关键词: 分类，谱感知
+
+### 因果发现相关
+1. **Generating Hypotheses of Dynamic Causal Graphs in Neuroscience: Leveraging Generative Factor Models of Observed Time Series**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45009](https://icml.cc/virtual/2025/poster/45009)  
+   - 作者: Zachary Brown, David Carlson  
+   - 关键词: 因果图
+
+2. **Causal Discovery from Conditionally Stationary Time Series**  
+   - 链接: [https://icml.cc/virtual/2025/poster/44317](https://icml.cc/virtual/2025/poster/44317)  
+   - 作者: Carles Balsells-Rodas, Xavier Sumba, Tanmayee Narendra, Ruibo Tu, Gabriele Schweikert, Hedvig Kjellström, Yingzhen Li  
+   - 关键词: 因果发现，平稳时间序列
+
+3. **Arrow: Accelerator for Time Series Causal Discovery with Time Weaving**  
+   - 链接: [https://icml.cc/virtual/2025/poster/46084](https://icml.cc/virtual/2025/poster/46084)  
+   - 作者: YUANYUAN YAO, Yuan Dong, Lu Chen, Kun Kuang, Ziquan Fang, Cheng Long, Yunjun Gao, TIANYI LI  
+   - 关键词: 因果发现
+
+### 基础模型相关
+1. **Exploring Representations and Interventions in Time Series Foundation Models**  
+   - 链接: [https://icml.cc/virtual/2025/poster/44453](https://icml.cc/virtual/2025/poster/44453)  
+   - 作者: Michal Wilinski, Mononito Goswami, Nina Żukowska, Willa Potosnak, Artur Dubrawski  
+   - 关键词: 基础模型，表示学习
+
+2. **In-Context Fine-Tuning for Time-Series Foundation Models**  
+   - 链接: [https://icml.cc/virtual/2025/poster/43707](https://icml.cc/virtual/2025/poster/43707)  
+   - 作者: Matthew Faw, Rajat Sen, Yichen Zhou, Abhimanyu Das
+
+3. **Sundial: A Family of Highly Capable Time Series Foundation Models**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45591](https://icml.cc/virtual/2025/poster/45591)  
+   - 作者: Yong Liu, Guo Qin, Zhiyuan Shi, Zhi Chen, Caiyin Yang, Xiangdong Huang, Jianmin Wang, Mingsheng Long  
+   - 关键词: 基础模型，多任务
+
+4. **Empowering Time Series Foundation Models with Sparse Mixture of Experts**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45201](https://icml.cc/virtual/2025/poster/45201)  
+   - 作者: Xu Liu, Juncheng Liu, Gerald Woo, Taha Aksu, Yuxuan Liang, Roger Zimmermann, Chenghao Liu, Junnan Li, Silvio Savarese, Caiming Xiong, Doyen Sahoo  
+   - 关键词: 时间序列基础模型，混合专家系统
+
+### 其他主题
+1. **Time Series Representations with Hard-Coded Invariances**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45216](https://icml.cc/virtual/2025/poster/45216)  
+   - 作者: Thibaut Germain, Chrysoula Kosma, Laurent Oudre  
+   - 关键词: 表示学习，不变性，卷积
+
+2. **KONODE: Koopman-Driven Neural Ordinary Differential Equations with Evolving Parameters for Time Series Analysis**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45804](https://icml.cc/virtual/2025/poster/45804)  
+   - 作者: Hanru Bai, Weiyang Ding  
+   - 关键词: 时间序列分析，库普曼理论
+
+3. **TransPL: Pseudo-Labeling via Code Transitions for Time Series Adaptation**  
+   - 链接: [https://icml.cc/virtual/2025/poster/46696](https://icml.cc/virtual/2025/poster/46696)  
+   - 作者: Jaeho Kim, Seulki Lee  
+   - 关键词: 时间序列自适应
+
+4. **Efficient Time Series Processing for Transformers and State-Space Models through Token Merging**  
+   - 链接: [https://icml.cc/virtual/2025/poster/44933](https://icml.cc/virtual/2025/poster/44933)  
+   - 作者: Leon Götz, Marcel Kollovieh, Stephan Günnemann, Leo Schwinn  
+   - 关键词: 时间序列处理加速，token化，状态空间模型
+
+5. **A Non-isotropic Time Series Diffusion Model with Moving Average Transitions**  
+   - 链接: [https://icml.cc/virtual/2025/poster/43547](https://icml.cc/virtual/2025/poster/43547)  
+   - 作者: Chenxi Wang, Linxiao Yang, Zhixian Wang, Liang Sun, Yi Wang
+
+6. **LAST SToP for Modeling Asynchronous Time Series**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45155](https://icml.cc/virtual/2025/poster/45155)  
+   - 作者: Shubham Gupta, Thibaut Durand, Graham Taylor, Lilian Bialokozowicz  
+   - 关键词: 异步时间序列，大模型
+
+7. **Slimming the Fat-Tail: MoF for Adaptive Time Series Modeling**  
+   - 链接: [https://icml.cc/virtual/2025/poster/44444](https://icml.cc/virtual/2025/poster/44444)  
+   - 作者: Tianyu Liu, kai sun, Fuchun Sun, Yu Luo, Yuanlong Zhang  
+   - 关键词: 时间序列建模，变形流
+
+8. **ITFormer: Bridging Time Series and Natural Language for Multi-Modal QA with Large-Scale Multitask Dataset**  
+   - 链接: [https://icml.cc/virtual/2025/poster/45847](https://icml.cc/virtual/2025/poster/45847)  
+   - 作者: Yilin Wang, Peixuan Lei, chen tao, Jie Song, Haoyuzhe, Yuxuan Zhang, LEI JIA, Yuanxiang Li, Zhongyu Wei  
+   - 关键词: 多模态问答，多任务
+
+9. **TimePoint: Accelerated Time Series Alignment via Self-Supervised Keypoint and Descriptor Learning**  
+   - 链接: [https://icml.cc/virtual/2025/poster/44741](https://icml.cc/virtual/2025/poster/44741)  
+   - 作者: Ron Shapira Weber, shahar benishay, Shahaf E. Finder, Andrey Lavrinenko, Oren Freifeld  
+   - 关键词: 对齐，自监督
+
+10. **Channel Normalization for Time Series Channel Identification**  
+    - 链接: [https://icml.cc/virtual/2025/poster/45365](https://icml.cc/virtual/2025/poster/45365)  
+    - 作者: Seunghan Lee, Taeyoung Park, Kibok Lee  
+    - 关键词: 通道归一化，通道验证
+
+11. **LSCD: Lomb--Scargle Conditioned Diffusion for Irregular Time series Imputation**  
+    - 链接: [https://icml.cc/virtual/2025/poster/45821](https://icml.cc/virtual/2025/poster/45821)  
+    - 作者: Elizabeth M Fons Etcheverry, Alejandro Sztrajman, Yousef El-Laham, Luciana Ferrer, Svitlana Vyetrenko, Manuela Veloso  
+    - 关键词: 插补，不规则时间序列，扩散
+
+12. **VerbalTS: Generating Time Series from Texts**  
+    - 链接: [https://icml.cc/virtual/2025/poster/45631](https://icml.cc/virtual/2025/poster/45631)
