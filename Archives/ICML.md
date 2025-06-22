@@ -215,9 +215,16 @@
 
 ### 异常检测相关
 1. **When Will It Fail?: Anomaly to Prompt for Forecasting Future Anomalies in Time Series**  
-   - 链接: [https://icml.cc/virtual/2025/poster/45978](https://icml.cc/virtual/2025/poster/45978)  
-   - 作者: Min-Yeong Park, Won-Jeong Lee, Seong Tae Kim, Gyeong-Moon Park  
-   - 关键词: 异常检测，提示
+   - **链接**: [https://icml.cc/virtual/2025/poster/45978](https://icml.cc/virtual/2025/poster/45978)  
+   - **作者**: Min-Yeong Park, Won-Jeong Lee, Seong Tae Kim, Gyeong-Moon Park  
+   - **关键词**: 异常检测，提示
+   - **Abstract**: Recently, time series forecasting, which predicts future signals, and time series anomaly detection, which identifies abnormal signals in given data, have achieved impressive success. However, in the real world, merely forecasting future signals or detecting anomalies in existing signals is not sufficiently informative to prevent potential system breakdowns, which lead to huge costs and require intensive human labor. In this work, we tackle a challenging and under-explored problem of time series anomaly prediction. In this scenario, the models are required to **forecast the upcoming signals while considering anomaly points to detect them**. To resolve this challenging task, we propose a simple yet effective framework, Anomaly to Prompt (A2P), which is jointly trained via the forecasting and anomaly detection objectives while sharing the feature extractor for better representation. On top of that, A2P leverages Anomaly-Aware Forecasting (AAF), which derives the anomaly probability by random anomaly injection to forecast abnormal time points. Furthermore, we propose Synthetic Anomaly Prompting (SAP) for more robust anomaly detection by enhancing the diversity of abnormal input signals for training anomaly detection model. As a result, our model achieves state-of-theart performances on seven real-world datasets, proving the effectiveness of our proposed framework A2P for a new time series anomaly prediction task.
+   - **动机**：当前主流的时间序列研究主要集中在两类任务：信号预测（forecasting）和异常检测（anomaly detection）。但在现实世界中，单独预测未来信号或检测已发生的异常，并不足以防止系统故障或事故发生。因此，本文提出一个更具挑战性且实用的新任务——异常预测（Anomaly Prediction, AP），旨在提前判断未来何时会发生异常。这对于医疗诊断、工业设备维护等领域具有重要意义。
+   - **方法简述（Proposed Method）**：
+    - 作者提出了一个统一框架 A2P（Anomaly to Prompt），融合了信号预测和异常检测的目标，利用共享的特征提取器进行联合训练。该框架包括两个关键组件：1）Anomaly-Aware Forecasting (AAF)，通过预训练网络学习异常的影响以增强对未来异常的预测能力；2）Synthetic Anomaly Prompting (SAP)，使用自适应的合成异常提示池（APP）注入模拟异常，提高模型对异常样本的鲁棒性。此外，还引入了新颖的损失函数（如能量分布损失和KL散度）来优化异常模拟过程。
+   - **实验设置与数据集**
+    - 论文在7个真实数据集上进行了实证验证，包括NASA的SMAP和MSL（遥测数据），eBay的PSM（服务器性能监控），SMD、SWaT、WADI（工业控制系统），以及MIT-BIH心电图数据库（MBA）。这些数据覆盖多维与单维时间序列，包含了从医疗到工业多个实际场景。实验采用F1-score为主要评估指标，并比较了现有最先进的预测与检测模型组合，结果显示A2P在多个场景下均实现了性能领先。
+   ![AAFN](./img/AAFN.png "AAFN")
 
 2. **Causality-Aware Contrastive Learning for Robust Multivariate Time-Series Anomaly Detection**  
    - 链接: [https://icml.cc/virtual/2025/poster/45960](https://icml.cc/virtual/2025/poster/45960)  
