@@ -313,6 +313,8 @@
     - 结果：
         - Sundial 在零样本点预测和概率预测上达到最先进性能；推理速度接近 N-BEATS，采样 20 次预测可在 CPU 上 1 秒内完成。
         - 验证了 RoPE、Pre-LN、FlashAttention 和 KV Cache 的有效性，分别提升性能、稳定性或效率。
+    ![Sundial](./img/Sundial2.png "Sundial")
+    ![Sundial1](./img/Sundial1.png "Sundial1")
 
 4. **Empowering Time Series Foundation Models with Sparse Mixture of Experts**  
    - 链接: [https://icml.cc/virtual/2025/poster/45201](https://icml.cc/virtual/2025/poster/45201)  
