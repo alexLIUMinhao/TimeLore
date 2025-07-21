@@ -296,6 +296,23 @@
    - 作者: Yong Liu, Guo Qin, Zhiyuan Shi, Zhi Chen, Caiyin Yang, Xiangdong Huang, Jianmin Wang, Mingsheng Long  
    - 关键词: 基础模型，多任务
    - Abstract: We introduce Sundial, a family of native, flexible, and scalable time series foundation models. To predict the next-patch's distribution, we propose a TimeFlow Loss based on flow-matching, which facilitates native pre-training of Transformers on continuous-valued time series without discrete tokenization. Conditioned on arbitrary-length time series, our models are pre-trained without specifying any prior distribution and can generate multiple probable predictions, achieving more flexibility in representation learning than using parametric densities. Towards time series foundation models, we leverage minimal but crucial adaptations of Transformers and curate TimeBench with one trillion time points, comprising mostly real-world datasets and synthetic data. By mitigating mode collapse via TimeFlow Loss, we pre-train a family of Sundial models on TimeBench, which achieve unprecedented model capacity and generalization performance. In addition to excellent scalability, Sundial achieves state-of-the-art results on both point and probabilistic forecasting benchmarks with a just-in-time inference speed, i.e., making zero-shot predictions within a few milliseconds. We believe that Sundial's pioneering generative forecasting capability can improve model reliability in real-world decision-making. Code is available at: https://github.com/thuml/Sundial.
+   - **动机**：时间序列预测在能源规划、天气预测、金融风险管理等领域至关重要，但传统深度模型需针对特定任务训练，泛化能力有限。现有的时间序列基础模型多为非生成式，限制了不确定性建模和决策可靠性。Sundial 旨在通过原生的、灵活的、可扩展的时间序列基础模型，解决模式崩塌问题，提升零样本预测能力和生成多样化预测结果的能力，以增强决策可靠性
+   - **方法**：Sundial 是一种基于 Transformer 的时间序列基础模型家族，核心方法包括：
+        - 时间序列分块（Patch Tokenization）：将连续值时间序列分割为 patch 嵌入，避免离散化 tokenization，保留原始值信息，减少上下文长度。 
+        - 解码器式 Transformer 主干：采用 Pre-LN、RoPE 位置编码、因果自注意力机制；使用 FlashAttention 和 KV Cache 优化训练稳定性和推理效率。 
+        - TimeFlow Loss： 基于流匹配（flow-matching）框架，提出参数化训练目标，优化自回归模型以生成灵活的概率分布，避免预定义参数分布（如高斯混合），缓解模式崩塌。 
+        - 生成式预测：条件于 Transformer 提取的表示，联合优化小型生成网络，生成多样化预测，支持概率预测。  
+   - **训练目标**：主要目标：学习任意复杂的时间序列分布，生成多样化的概率预测，提升零样本预测性能和决策可靠性。
+        - TimeFlow Loss：通过流匹配优化自回归模型，生成条件于历史表示的下一 patch 分布，公式为： [ \mathcal{L}\left(\theta, \mathbf{h}i\right)=\mathbb{E}{t, \varepsilon, \mathbf{y}_i}\left|u_t^\theta\left(\mathbf{y}_i^{(t)} \mid \mathbf{h}_i\right)-\left(\mathbf{y}_i-\mathbf{y}_i^{(0)}\right)\right|^2 ] 其中，(\mathbf{y}_i) 为真实值，(\mathbf{y}_i^{(0)}) 为高斯噪声，(\mathbf{h}_i) 为 Transformer 表示。  
+   - **实验设置与数据集**
+        - 数据集（TimeBench）：规模：超过一万亿时间点，包含大量真实世界数据集（如 ERA5 气象数据）和少量（0.05%）合成数据（基于 KernelSynth）；预处理：包括缺失值填补、异常值排除、逐变量归一化，采用 S3 格式处理多变量数据；来源：整合开源数据集（如 Woo et al., 2024; Ansari et al., 2024），加入气象和合成数据以增强模式多样性。
+    - 实验设置：
+        - Sundial 家族包括小型（32M 参数）、基础（128M 参数）和大型（444M 参数）模型；上下文长度固定为 2880，预测长度为 16 或 720。 
+        - 在 Time-Series-Library（长期预测）、GIFT-Eval（综合预测）和 FEV 排行榜（短期预测）上进行零样本评估；使用 MSE、MAE、CRPS 等指标。
+        - 与 Time-MoE、Timer、Moirai、TimesFM、Chronos 等模型比较。
+    - 结果：
+        - Sundial 在零样本点预测和概率预测上达到最先进性能；推理速度接近 N-BEATS，采样 20 次预测可在 CPU 上 1 秒内完成。
+        - 验证了 RoPE、Pre-LN、FlashAttention 和 KV Cache 的有效性，分别提升性能、稳定性或效率。
 
 4. **Empowering Time Series Foundation Models with Sparse Mixture of Experts**  
    - 链接: [https://icml.cc/virtual/2025/poster/45201](https://icml.cc/virtual/2025/poster/45201)  
