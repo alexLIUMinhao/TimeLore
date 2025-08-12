@@ -152,21 +152,28 @@ $$
 
 1. **缺失机制分类模型**  
 通过时间序列数据和外部多模态信息 \(Z\)，推断缺失机制类别 \(C \in \{MCAR, MAR, MNAR\}\)：  
-$$P(C \mid X_{obs}, Z) = \text{Classifier}_\theta(X_{obs}, Z)$$
+$$
+P(C \mid X_{obs}, Z) = \text{Classifier}_\theta(X_{obs}, Z)
+$$
 
 2. **条件插补模型**  
 根据缺失机制类别，选择对应的插补函数：  
-$$\hat{X}_{mis} = f_{\phi_C}(X_{obs}, Z), \quad C \in \{MCAR, MAR, MNAR\}$$
+$$
+\hat{X}_{mis} = f_{\phi_C}(X_{obs}, Z), \quad C \in \{MCAR, MAR, MNAR\}
+$$
 
 3. **联合优化目标**  
 端到端训练缺失机制分类与插补模块：  
-$$\min_{\theta, \phi} \mathbb{E}_{X, M, C} \left[ \mathcal{L}_{imp}(X_{mis}, \hat{X}_{mis}) + \lambda \mathcal{L}_{cls}(C, \hat{C}) \right]$$  
+$$
+\min_{\theta, \phi} \mathbb{E}_{X, M, C} \left[ \mathcal{L}_{imp}(X_{mis}, \hat{X}_{mis}) + \lambda \mathcal{L}_{cls}(C, \hat{C}) \right]
+$$  
 其中，\(\mathcal{L}_{imp}\) 表示插补误差，\(\mathcal{L}_{cls}\) 为缺失机制分类损失，\(\lambda\) 是权重超参数。
 
 4. **不确定性估计**  
 通过贝叶斯或深度集成方法，为插补结果提供置信区间：  
-$$P(\hat{X}_{mis} \mid X_{obs}, Z, C) \approx \mathcal{N}(\mu_{\phi_C}, \sigma_{\phi_C}^2)$$
-
+$$
+P(\hat{X}_{mis} \mid X_{obs}, Z, C) \approx \mathcal{N}(\mu_{\phi_C}, \sigma_{\phi_C}^2)
+$$
 ---
 
 ## 贡献总结
