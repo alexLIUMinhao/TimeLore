@@ -20,5 +20,5 @@ Along this journey, we pay special attention to:
 Ultimately, we believe that in **simplicity lies depth** — and in **time lies truth**.
 
 
-- [🆕 multimalda-timeseries-analysis](#multimalda-timeseries-analysis) – 多模态时间序列建模、异常检测与可视化  
-- [🆕 multimalda-imputation](#multimalda-imputation) – 缺失值插补（统计 / 机器学习 / 深度学习）
+- [🆕 multimodal-timeseries-analysis](./Archives/multimodal.md) – 多模态时间序列建模、异常检测与可视化  
+- [🆕 multimodal-imputation](./Archives/imputation.md) – 缺失值插补（统计 / 机器学习 / 深度学习）
