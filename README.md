@@ -21,4 +21,4 @@ Ultimately, we believe that in **simplicity lies depth** — and in **time lies 
 
 
 - [🆕 multimodal-timeseries-analysis](./Archives/multimodal.md) – 多模态时间序列建模、异常检测与可视化  
-- [🆕 multimodal-imputation](./Archives/imputation.md) – 缺失值插补（统计 / 机器学习 / 深度学习）
+- [🆕 Imputation](./Archives/imputation.md) – 缺失值插补（统计 / 机器学习 / 深度学习）
