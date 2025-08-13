@@ -8,7 +8,22 @@
 ---
 
 ## 论文列表
-1. 
+1. **Instruction-Following LLMs for Time Series Prediction: A Two-Stage Multimodal Approach**
+    - **链接**: https://openreview.net/forum?id=01wMplF8TL
+    - **作者**: Anonymous authors (Paper under double-blind review)
+    - **关键词**: Time series prediction, LLMs, multimodal, instruction-following, text integration
+    - **abstract**: We introduce Text-Informed Time Series Prediction (TITSP), an innovative multimodal framework that integrates textual knowledge with temporal dynamics using Large Language Models (LLMs). TITSP employs a two-stage process that bridges numerical data with rich contextual information for enhanced forecasting accuracy and interpretability. In the first stage, we present AutoPrompter, which captures temporal dependencies from time series data and aligns them with semantically meaningful text embeddings. In the second stage, these aligned embeddings are refined by incorporating task-specific textual instructions through LLM. We evaluate TITSP on several multimodal time series prediction tasks, demonstrating substantial improvements over state-of-the-art baselines. Quantitative results reveal significant gains in predictive performance, while qualitative analyses show that textual context enhances interpretability and actionable insights. Our findings indicate that integrating multimodal inputs not only improves prediction accuracy but also fosters more intuitive, user-centered forecasting.
+    - **动机**：时序预测在金融、医疗和气候科学等领域至关重要，用于支持决策。传统方法如ARIMA难以处理复杂的非线性模式和长距离依赖，而深度学习模型如LSTM和CNN虽有所改进，但仅依赖数值数据，限制了外部上下文信息（如专家见解或宏观经济事件）的整合。这在波动性强的系统中（如金融市场或患者健康监测）尤为问题。Transformer基模型和LLM的最新进展提升了依赖捕捉，但缺乏与领域特定文本见解的整合。TITSP通过结合深度学习处理时序与LLM整合文本输入，解决这些挑战，实现更准确、上下文感知且可解释的预测，尤其在需要专家输入的场景中。
+    - **方法简述（Proposed Method）**：提出的方法Text-Informed Time Series Prediction (TITSP)是一个两阶段框架。第一阶段，AutoPrompter从时序数据中捕捉时间依赖，并使用增强的Vector Quantized-Variational AutoEncoder (VQ-VAE)将其与文本嵌入对齐，包括交叉注意力机制和预训练语言码本。主要组件包括：通过CNN进行时序嵌入、线性压缩的文本嵌入、交叉注意力对齐，以及使用重建损失和向量量化损失的自监督学习（包括量化潜在损失和承诺损失）。第二阶段，通过监督多模态融合精炼预测：使用LLM提取文本嵌入，通过交叉注意力和Hadamard乘积与时序嵌入结合，并使用基于CNN的解码器。训练最小化平均绝对误差 (MAE)。关键创新是通过自监督学习实现时序与文本的语义对齐，提升可解释性和准确性，适用于数值与文本数据相互依赖的场景。
+    - **实验设置与数据集**：使用的数据集包括ETTh1、ETTh2、ETTm1、ETTm2、天气、交通、电力、汇率，以及Lorenz时序，使用合成数据生成并融入文本指令如“增加”、“减少”或“稳定”。评估指标为均方误差 (MSE)、平均绝对误差 (MAE) 和遵守率（预测遵守指令的比例）。比较的基线包括Time-LLM、Qwen4MTS、UniTime、Llama-3.1-8B、GPT4MTS、itransformer和PatchTST。主要结果显示TITSP性能优越，具有高遵守率（如“保持稳定”为0.98）和低MSE（如“保持稳定”为0.35），比基线更好，证明了强大的零样本泛化和关键词提取能力，尤其在处理长序列和指令遵守方面。
+    - **审稿人对论文的弱点评价**：
+        - 创新性（普遍认可）：所有 reviewer 都肯定“把文本指令引入时间序列预测”这一思路本身有价值，认为把 LLM 当作可插拔的第二阶段来融合专家知识具有启发性。
+        - 方法细节与可复现性（最大争议点）： R1 & R3 指出论文对 AutoPrompter 如何把数值序列映射为“语义有意义的文本嵌入”描述不足，缺少关键公式和消融实验；R2 提到代码与数据没有完全公开，只靠文字描述难以复现；R4 认为第二阶段的 LLM prompt 设计过于简单，担心对指令措辞敏感，建议给出 prompt 模板与消融。
+        - 实验充分性（褒贬不一）：R2 & R4 质疑数据规模偏小（最大仅 50 k 点），且全部来自金融/能源领域，担心跨领域泛化能力；R3 建议增加 ablation：去掉文本、只用 LLM 等设置，以明确增益来源。
+        - 可解释性与用户体验（亮点）：多位 reviewer 喜欢论文提供的“自然语言解释”示例，认为对业务人员友好；R1 建议把更多案例放进正文而不是附录。
+    ![TITSP0](./img/TITSP0.png "TITSP0")
+    ![TITSP1](./img/TITSP1.png "TITSP1")
+    ![TITSP2](./img/TITSP2.png "TITSP2")
 
 4. **Enhancing Foundation Models for Time Series Forecasting via Wavelet-based Tokenization**  
    - **链接**: [https://icml.cc/virtual/2025/poster/46131](https://icml.cc/virtual/2025/poster/46131)  
