@@ -30,6 +30,78 @@
     ![TITSP1](./img/TITSP1.png "TITSP1")
     ![TITSP2](./img/TITSP2.png "TITSP2")
 
+    - **数据集生成**
+    ### 多模态时序预测数据生成过程
+
+    #### 概述
+    在论文 *Instruction-Following LLMs for Time Series Prediction: A Two-Stage Approach (TITSP)* 中，针对真实数据集（如 ETTh1）提出了一种**自动化的多模态数据合成方法**。  
+    该方法以真实时序数据为基础，自动生成文本指令，并根据指令数学地修改未来预测值，形成多模态数据对 `(时序数据 + 文本 + 修改后标签)`，以模拟结合上下文指令的预测场景，无需人工标注。
+
+    此过程是**数据预处理步骤**，用于构建训练/评估数据集，并不直接参与模型训练。
+
+    ---
+
+    #### 数据生成流程
+
+    1. **基础时序数据获取**  
+       - 从真实数据集加载多变量时序序列  
+         $$
+         X = \{x_1, x_2, \ldots, x_T\}
+         $$
+         其中 $x_t$ 为时间步 $t$ 的特征向量。  
+       - 以 ETTh1 为例：包含 2 年、1 小时间隔的变压器温度与 6 个电力负载特征，数据集按 12/4/4 个月划分为训练/验证/测试集。  
+       - 完全自动化加载，无需人工干预。
+
+    2. **文本指令自动生成**  
+       - 为每段时序自动分配文本指令 $S$，如 `"increase"`, `"decrease"`, `"stabilize"`, `"increase amplitude"` 等（详见论文 Table 6）。  
+       - 指令从预定义列表中随机采样，确保覆盖多种模式（线性、指数、对数等）。  
+       - 在 ETTh1 中，每个指令可生成约 14,307 条训练样本。
+
+    3. **基于指令的预测值修改**  
+       - 按指令 $S$ 自动修改未来预测值，得到标签序列：  
+         $$
+         \hat{X}(S) = \{\hat{x}(S)_{T+1}, \ldots, \hat{x}(S)_{T+H}\}
+         $$
+         其中 $H$ 为预测步长（horizon）。  
+       - 修改规则基于最后观测值 $x_T$，并引入随机参数（如 $A \sim U(\cdot)$）模拟真实动态。  
+       - 修改公式程序化实现（详见论文 Appendix C, Table 6）。
+
+    4. **形成多模态数据对**  
+       - 每条数据对为：  
+         $$
+         (X, S, \hat{X}(S))
+         $$
+         其中：
+         - **$X$**：原始时序输入  
+         - **$S$**：文本上下文  
+         - **$\hat{X}(S)$**：指令修改后的标签序列  
+       - 保证语义一致性，例如 `"trend up"` 对应上升趋势标签。
+
+    ---
+
+    #### 示例
+
+    #### 示例 1
+    **已知**：  
+    - 原序列 $X = [45, 46, 47, 48, 49, 50]$  
+    - 指令 $S = \text{"trend up"}$  
+    - $A = 1$，预测步长 $H = 3$
+
+    **计算**：  
+    $$
+    \hat{x}_{7} = 50 + 1 \times 1 = 51
+    $$
+    $$
+    \hat{x}_{8} = 50 + 1 \times 2 = 52
+    $$
+    $$
+    \hat{x}_{9} = 50 + 1 \times 3 = 53
+    $$
+
+    **标签**：$\hat{X}(S) = [51, 52, 53]$  
+    **最终数据对**：
+
+
 4. **Enhancing Foundation Models for Time Series Forecasting via Wavelet-based Tokenization**  
    - **链接**: [https://icml.cc/virtual/2025/poster/46131](https://icml.cc/virtual/2025/poster/46131)  
    - **作者**: Luca Masserano, Abdul Fatir Ansari, Boran Han, Xiyuan Zhang, Christos Faloutsos, Michael Mahoney, Andrew Wilson, Youngsuk Park, Syama Sundar Yadav Rangapuram, Danielle Maddix, Yuyang Wang 论文由 Cornell University 和 多个工业团队（包括 AWS AI、Google Research、Stanford 等）合作完成 
