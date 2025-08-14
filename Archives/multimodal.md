@@ -99,21 +99,24 @@
     $$
 
     **标签**：$\hat{X}(S) = [51, 52, 53]$  
-    **最终数据对**：
+    **最终数据对**：([45,46,47,48,49,50], "trend up", [51,52,53])
 
-   | Action                          | Description                              | Mathematical Function                                      | Generated Dataset                              |
-|---------------------------------|------------------------------------------|-------------------------------------------------------------|-----------------------------------------------|
-| Linear Trend Up                 | Linear increase over time                | see Equation 4                                              | weather, exchange rate                        |
-| Linear Trend Down               | Linear decrease over time                | see Equation 5                                              | weather, exchange rate                        |
-| Exponential Growth              | Exponential increase over time           | $prediction \times \exp\big(B \times \text{np.arange}(x)\big)$ | weather, exchange rate, electricity           |
-| Exponential Decay               | Exponential decrease over time           | $prediction \times \exp\big(-B \times \text{np.arange}(x)\big)$ | weather, exchange rate, electricity           |
-| Logarithmic Growth              | Logarithmic growth over time             | $prediction + C \times \log\big(1+ \text{np.arange}(x)\big)$    | weather, exchange rate, electricity           |
-| Logarithmic Decay               | Logarithmic decay over time              | $prediction - C \times \log\big(1+ \text{np.arange}(x)\big)$    | weather, exchange rate, electricity           |
-| Keep Stable                     | Constant value of last input point       | All                                                         |                                               |
-| Linear Growth and Linear Decay  | Linear increase followed by decrease     | see Equation 6                                              | weather, exchange rate                        |
-| Linear Decay and Linear Growth  | Linear decrease followed by increase     | see Equation 7                                              | weather, exchange rate                        |
-| Increase Amplitude              | Scale up predictions by a factor         | $prediction \times (1 + A)$                                 | ETTh1, ETTh2, ETTm1, ETTm2, traffic            |
-| Decrease Amplitude              | Scale down predictions by a factor       | $prediction \times (1 - A)$                                 | ETTh1, ETTh2, ETTm1, ETTm2, traffic            |
+    ---
+
+| Action                          | Description                              | Mathematical Function                                     | Generated Dataset                              |
+|---------------------------------|------------------------------------------|------------------------------------------------------------|-----------------------------------------------|
+| Linear Trend Up                 | Linear increase over time                | see Equation 4                                             | weather, exchange rate                        |
+| Linear Trend Down               | Linear decrease over time                | see Equation 5                                             | weather, exchange rate                        |
+| Exponential Growth              | Exponential increase over time           | prediction * exp(B * np.arange(x))                         | weather, exchange rate, electricity           |
+| Exponential Decay               | Exponential decrease over time           | prediction * exp(-B * np.arange(x))                        | weather, exchange rate, electricity           |
+| Logarithmic Growth              | Logarithmic growth over time             | prediction + C * log(1 + np.arange(x))                     | weather, exchange rate, electricity           |
+| Logarithmic Decay               | Logarithmic decay over time              | prediction - C * log(1 + np.arange(x))                     | weather, exchange rate, electricity           |
+| Keep Stable                     | Constant value of last input point       | All                                                        |                                               |
+| Linear Growth and Linear Decay  | Linear increase followed by decrease     | see Equation 6                                             | weather, exchange rate                        |
+| Linear Decay and Linear Growth  | Linear decrease followed by increase     | see Equation 7                                             | weather, exchange rate                        |
+| Increase Amplitude              | Scale up predictions by a factor         | prediction * (1 + A)                                       | ETTh1, ETTh2, ETTm1, ETTm2, traffic            |
+| Decrease Amplitude              | Scale down predictions by a factor       | prediction * (1 - A)                                       | ETTh1, ETTh2, ETTm1, ETTm2, traffic            |
+
 
 
 
