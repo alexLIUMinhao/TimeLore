@@ -21,6 +21,12 @@
     这种方法为交互式时序预测和假设情景模拟提供了新的范式，使模型不仅能回答“未来会怎样”，还能基于高层语义主动塑形未来轨迹。
 
 
+4. 非结构化文本生成时间序列的挑战：
+    - 非结构化数据的语义复杂性：文本等非结构化数据包含错综复杂的语义信息，难以区分相关内容与无关噪声，导致模型容易受干扰。
+    - 时间序列的独特特性：时间序列具有多变量特性和复杂时序依赖，与图像生成中的空间结构根本不同，无法直接移植图像方法。
+    - 控制条件的多语义影响：生成条件包含多层语义，并施加不同影响（如“整天下雨” vs. “晴天后下雨”的细微区别），需准确反映在序列中。
+    - 配对数据的稀缺：现实中缺少文本-时间序列配对数据，阻碍两种模态间鲁棒连接的学习。
+
 ---
 
 ## 论文列表
@@ -173,6 +179,15 @@
 | 时间序列属性 (Attributes) | 时间序列的内在特征，如趋势、季节性或局部形状，通常预定义为固定属性   | Trend type: linear<br>Trend direction: up<br>Season cycle: 4<br>Local shapelet: ??? |
 | 类标签 (Class Labels) | 离散类别，用于分类条件生成                                           | Discrete categories (e.g., class 1, class 2)                        |
 | 约束 (Constraints)    | 预设约束条件，用于指导生成过程                                       | Preset constraints (e.g., min/max values, specific patterns)
+
+---
+   
+   - **增强真实世界数据集（Augmented Real-World Datasets)**:
+    - ETTm1数据集例子:增强数据集从现有时间序列开始，使用特征提取工具和LLM生成对应文本，实现自动化配对。
+        - 加载原始时间序列
+        - 特征提取：使用TSFresh提取趋势、季节性等特征
+        - 生成文本：使用GPT-4基于提取特征生成描述(文本生成方法：GPT-4提示如：“基于这些特征生成描述：趋势向上，季节周期4，高频组件32。” 示例输出："The time series has a linear up trend with season cycle 4.")
+        - 配对并标准化。
 
 
 4. **Enhancing Foundation Models for Time Series Forecasting via Wavelet-based Tokenization**  
