@@ -131,6 +131,16 @@
 | Increase Amplitude              | Scale up predictions by a factor         | prediction * (1 + A)                                       | ETTh1, ETTh2, ETTm1, ETTm2, traffic            |
 | Decrease Amplitude              | Scale down predictions by a factor       | prediction * (1 - A)                                       | ETTh1, ETTh2, ETTm1, ETTm2, traffic            |
 
+2. **VerbalTS: Generating Time Series from Texts**
+   - **作者**: Shuqi Gu, Chuyue Li, Baoyu Jing, Kan Ren. 上海工业大学信息科学与技术学院;伊利诺伊大学厄巴纳-香槟分校
+   - **关键词**: Time series generation, Text-to-time-series, Diffusion models, Multi-focal alignment, Multi-view noise estimator, Semantic reprogramming, VERBALTS
+   - **Abstract**: Time series synthesis has become a foundational task in modern society, underpinning decisionmaking across various scenes. Recent approaches primarily generate time series from structured conditions, such as attribute-based metadata. However, these methods struggle to capture the full complexity of time series, as the predefined structures often fail to reflect intricate temporal dynamics or other nuanced characteristics. Moreover, constructing structured metadata requires expert knowledge, making large-scale data labeling costly and impractical. In this paper, we introduce VERBALTS, a novel framework for generating time series from unstructured textual descriptions, offering a more expressive and flexible solution to time series synthesis. To bridge the gap between unstructured text and time series data, VERBALTS employs a multi-focal alignment and generation framework, effectively modeling their complex relationships. Experiments on two synthetic and four real-world datasets demonstrate that VERBALTS outperforms existing methods in both generation quality and semantic alignment with textual conditions.
+   - **动机**：现有时间序列生成方法主要依赖结构化条件（如元数据或属性），但这些条件难以捕捉时间序列的复杂动态（如局部形状或事件序列），且构建结构化元数据需要专家知识，导致大规模标注成本高昂且不切实际。因此，提出从非结构化文本描述生成时间序列的框架VERBALTS，提供更具表现力和灵活性的解决方案，能够更好地传达细粒度语义信息并桥接文本与时间序列间的模态差距。
+   - **方法简述（Proposed Method）**：
+    - VERBALTS是一个基于扩散模型的多焦点对齐和生成框架，包括多视图噪声估计器和多焦点文本处理器。多视图噪声估计器从时间、空间和扩散三个视图处理噪声时间序列：使用多分辨率补丁编码器捕捉多尺度时序动态，通过自注意力机制建模时空交互，并将扩散过程分为多个阶段以渐进精炼生成。多焦点文本处理器通过语义重编程（基于可学习锚向量）将文本转换为多语义表示（对应时间、空间和扩散视图）。最终，通过适配器（使用门控、缩放和偏移参数）实现文本与时间序列的多模态语义对齐，确保生成过程受文本细粒度控制。
+   - **实验设置与数据集**
+    - 实验分为单变量和多变量设置，使用合成数据集（Synth-U单变量、Synth-M多变量，手动构建文本-时间序列对）和真实世界数据集（Weather气候指标、BlindWays盲人轨迹，基于真实文本标注；增强数据集ETTm1电力和Traffic交通，使用外部工具标注文本）。评估指标包括保真度（FID和J-FTSD，测量生成分布与真实分布差异）和语义对齐（CTTP分数，通过对比学习计算时间序列与文本的相似度）。基线方法包括TimeVQVAE（类条件）、DiffTime（约束条件）、TimeWeaver和TEdit（属性条件），所有基线条件从文本转换而来。实验在三个随机运行中报告平均性能和标准差，验证生成质量、语义对齐及编辑能力。
+  
 
 
 
