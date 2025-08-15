@@ -135,13 +135,20 @@
    - **作者**: Shuqi Gu, Chuyue Li, Baoyu Jing, Kan Ren. 上海工业大学信息科学与技术学院;伊利诺伊大学厄巴纳-香槟分校
    - **关键词**: Time series generation, Text-to-time-series, Diffusion models, Multi-focal alignment, Multi-view noise estimator, Semantic reprogramming, VERBALTS
    - **Abstract**: Time series synthesis has become a foundational task in modern society, underpinning decisionmaking across various scenes. Recent approaches primarily generate time series from structured conditions, such as attribute-based metadata. However, these methods struggle to capture the full complexity of time series, as the predefined structures often fail to reflect intricate temporal dynamics or other nuanced characteristics. Moreover, constructing structured metadata requires expert knowledge, making large-scale data labeling costly and impractical. In this paper, we introduce VERBALTS, a novel framework for generating time series from unstructured textual descriptions, offering a more expressive and flexible solution to time series synthesis. To bridge the gap between unstructured text and time series data, VERBALTS employs a multi-focal alignment and generation framework, effectively modeling their complex relationships. Experiments on two synthetic and four real-world datasets demonstrate that VERBALTS outperforms existing methods in both generation quality and semantic alignment with textual conditions.
+   - **相关工作**：
+    - **无条件生成（unconditional generation）**：无条件生成就像“随机抽样”：模型先从真实数据中学到时间序列的整体分布（例如，通过训练捕捉数据的统计模式），然后随机生成新序列。但缺点是用户几乎无法控制生成的序列具体是什么样子（如趋势、周期或特定特征），生成的样本可能多样但不可预测或不精确。
+    - **条件生成（conditional generation）**：条件生成允许用户通过“条件”来指导生成过程。这些条件是结构化的（structured），意思是固定格式、易于处理的（如键-值对或标签）。例如：元数据（metadata）：外部附加信息，如数据集标签或上下文（引用Narasimhan et al., 2024的TimeWeaver方法）；时间序列属性（attributes）：序列的内在特征，如趋势类型、季节周期（引用Jing et al., 2024a的TEdit方法）；类标签（class labels）：离散类别，用于分类指导生成（引用Li et al., 2022和Wang et al., 2023）。
+    - **顺序条件**：结构化表示（如属性标签或元数据）虽然简单易用，但无法很好地处理时间序列的“顺序动态”（e.g., 事件的前后关系或时序演化）。因为结构化形式通常是静态的列表或类别，无法自然表达“顺序”（sequence），导致信息丢失。例如，一个天气序列的“先小雨后中雨”在结构化中可能只变成“Light rain, Moderate rain”，丢失了时间顺序，导致生成的序列无法准确反映真实动态。e.g.结构化： "Weather: Light rain ? Cloud ? Moderate rain ?"（无法捕捉事件顺序）；非结构化文本： "It‘s the morning of a day in June. The current weather is showing light rain. The weather overall is expected to be partly broken clouds with moderate rain later on."（明确表达顺序：当前小雨，后转为中雨）。
    - **动机**：现有时间序列生成方法主要依赖结构化条件（如元数据或属性），但这些条件难以捕捉时间序列的复杂动态（如局部形状或事件序列），且构建结构化元数据需要专家知识，导致大规模标注成本高昂且不切实际。因此，提出从非结构化文本描述生成时间序列的框架VERBALTS，提供更具表现力和灵活性的解决方案，能够更好地传达细粒度语义信息并桥接文本与时间序列间的模态差距。
         - 论文指出，结构化条件虽然易于学习和处理，但存在显著局限性，导致难以捕捉时间序列的复杂动态（如局部形状或事件序列）。主要原因如下：
             - **信息丢失（Information Loss）**：时间序列往往包含样本特定的独特信息（如特殊局部形状或不规则峰值），这些信息无法用统一的结构化框架封装。例如，论文图1中展示了“beginning part has double peaks”（开头部分有双峰），这是一种样本特定的局部形状（local shapelet），但结构化条件（如“local shapelet: ???”）难以精确描述或标准化，导致生成过程中忽略这些细微特征； 事件序列（sequence of events）是时间序列的常见特性，如天气变化的顺序（“light rain”后转为“moderate rain”），结构化条件（如简单列出“light rain, cloud, moderate rain”）无法有效捕捉时序依赖和顺序关系，容易丢失动态演化信息。
             - **预定义结构的局限性（Limitations of Predefined Structures）**：结构化条件依赖固定格式（如离散类别或数值属性），无法反映时间序列的复杂时序动态（intricate temporal dynamics）或其他细微特性（nuanced characteristics）。例如，真实世界时间序列可能涉及多变量交互、多尺度趋势或非线性变化，但结构化条件难以涵盖所有可能变异，导致生成的样本多样性不足；这些条件限制了生成模型的泛化能力。例如，论文提到DiffTime方法使用约束作为条件，但对于无法轻易表述为约束的条件（如复杂事件序列），其适用性受限。
             - **构建成本高昂（Costly Construction）**：从大规模无组织数据中提取结构化特征需要专家知识（expert knowledge），导致标注过程耗时且劳动力密集（time-consuming and labor-intensive）。这使得大规模数据集构建不切实际，进一步加剧了捕捉复杂动态的难度。
+            - **举例**：
+                - 结构化条件： "Trend: Up, Volatility: High"（静态属性，无法指定“开头上涨，中期波动大，后期稳定”）。
+                - 非结构化文本（VERBALTS方式）： "The stock starts with a sharp rise in the morning, experiences high volatility around noon due to news, and stabilizes in the afternoon."（捕捉顺序事件序列，确保生成符合时序动态）。
     ![VerbalTS0](./img/VerbalTS0.png "VerbalTS0")
-    
+
    - **方法简述（Proposed Method）**：
     - VERBALTS是一个基于扩散模型的多焦点对齐和生成框架，包括多视图噪声估计器和多焦点文本处理器。多视图噪声估计器从时间、空间和扩散三个视图处理噪声时间序列：使用多分辨率补丁编码器捕捉多尺度时序动态，通过自注意力机制建模时空交互，并将扩散过程分为多个阶段以渐进精炼生成。多焦点文本处理器通过语义重编程（基于可学习锚向量）将文本转换为多语义表示（对应时间、空间和扩散视图）。最终，通过适配器（使用门控、缩放和偏移参数）实现文本与时间序列的多模态语义对齐，确保生成过程受文本细粒度控制。
 
