@@ -140,8 +140,13 @@
     - VERBALTS是一个基于扩散模型的多焦点对齐和生成框架，包括多视图噪声估计器和多焦点文本处理器。多视图噪声估计器从时间、空间和扩散三个视图处理噪声时间序列：使用多分辨率补丁编码器捕捉多尺度时序动态，通过自注意力机制建模时空交互，并将扩散过程分为多个阶段以渐进精炼生成。多焦点文本处理器通过语义重编程（基于可学习锚向量）将文本转换为多语义表示（对应时间、空间和扩散视图）。最终，通过适配器（使用门控、缩放和偏移参数）实现文本与时间序列的多模态语义对齐，确保生成过程受文本细粒度控制。
    - **实验设置与数据集**
     - 实验分为单变量和多变量设置，使用合成数据集（Synth-U单变量、Synth-M多变量，手动构建文本-时间序列对）和真实世界数据集（Weather气候指标、BlindWays盲人轨迹，基于真实文本标注；增强数据集ETTm1电力和Traffic交通，使用外部工具标注文本）。评估指标包括保真度（FID和J-FTSD，测量生成分布与真实分布差异）和语义对齐（CTTP分数，通过对比学习计算时间序列与文本的相似度）。基线方法包括TimeVQVAE（类条件）、DiffTime（约束条件）、TimeWeaver和TEdit（属性条件），所有基线条件从文本转换而来。实验在三个随机运行中报告平均性能和标准差，验证生成质量、语义对齐及编辑能力。
-  
-
+   - **结构化条件(如元数据或属性)**
+    | 类型                  | 描述                                                                 | 例子                                                                 |
+|-----------------------|----------------------------------------------------------------------|----------------------------------------------------------------------|
+| 元数据 (Metadata)     | 与时间序列相关的附加信息，如数据集标签或外部上下文，通常以键-值对形式呈现 | Weather: Light rain, Cloud, Moderate rain                           |
+| 时间序列属性 (Attributes) | 时间序列的内在特征，如趋势、季节性或局部形状，通常预定义为固定属性   | Trend type: linear<br>Trend direction: up<br>Season cycle: 4<br>Local shapelet: ??? |
+| 类标签 (Class Labels) | 离散类别，用于分类条件生成                                           | Discrete categories (e.g., class 1, class 2)                        |
+| 约束 (Constraints)    | 预设约束条件，用于指导生成过程                                       | Preset constraints (e.g., min/max values, specific patterns)
 
 
 4. **Enhancing Foundation Models for Time Series Forecasting via Wavelet-based Tokenization**  
