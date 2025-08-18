@@ -1,4 +1,4 @@
-# 多模态时序分析
+# 多模态时序分析：**从”预测“走向“可控生成”**
 
 ## Motivation
 1. 随着深度学习兴起，长短期记忆网络（LSTM）和卷积神经网络（CNN）等模型在建模这些复杂性方面取得了显著提升。然而，它们仍受限于仅依赖数值数据，无法融合外部情境信息——例如**专家见解**或**宏观经济**事件——而这些信息本可提高预测的准确率与可解释性。在金融、病患监护等混沌或高波动的系统中，这一缺陷尤为突出。
@@ -194,7 +194,7 @@
         - TSFresh是一个开源的Python库，全称为“Time Series Feature extraction based on scalable hypothesis tests”（基于可扩展假设测试的时间序列特征提取）。它主要用于从时间序列数据（如股票价格、传感器读数或天气记录）中自动提取数百个特征，这些特征包括基本统计（如峰值数量、均值）、时序特性（如自相关、傅里叶变换）和高级指标（如波动率、趋势），以支持机器学习任务如分类、回归或聚类。它通过标准化和高效算法实现特征工程，减少手动工作，并内置假设测试来过滤无关特征。TSFresh支持并行计算，适用于大规模数据集，常用于数据分析、预测和异常检测等领域。
 
 
-4. **Enhancing Foundation Models for Time Series Forecasting via Wavelet-based Tokenization**  
+3. **Enhancing Foundation Models for Time Series Forecasting via Wavelet-based Tokenization**  
    - **链接**: [https://icml.cc/virtual/2025/poster/46131](https://icml.cc/virtual/2025/poster/46131)  
    - **作者**: Luca Masserano, Abdul Fatir Ansari, Boran Han, Xiyuan Zhang, Christos Faloutsos, Michael Mahoney, Andrew Wilson, Youngsuk Park, Syama Sundar Yadav Rangapuram, Danielle Maddix, Yuyang Wang 论文由 Cornell University 和 多个工业团队（包括 AWS AI、Google Research、Stanford 等）合作完成 
    - **关键词**: 预测，基础模型，小波变换，token化
@@ -206,7 +206,7 @@
     - WaveToken 在包含 42（Electricity、Traffic（PEMS）、ETT、ETTm ） 个数据集的全面 benchmark 上评测，覆盖 in-domain 和 zero-shot 场景，结果显示其在多个常用任务中超越或匹配现有基础模型和针对性深度模型，并在泛化能力上表现优异。
    ![WaveToken](./img/WaveToken.png "WaveToken")
 
-5. **Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting**  
+4. **Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting**  
    - **链接**: [https://icml.cc/virtual/2025/poster/44762](https://icml.cc/virtual/2025/poster/44762)  
    - **作者**: Siru Zhong, Weilin Ruan, Ming Jin, Huan Li, Qingsong Wen, Yuxuan Liang  
    - **关键词**: 预测，多模态，视觉语言模型
@@ -216,4 +216,18 @@
    - **实验设置与数据集**：
     作者在多个时间序列数据集上进行了实验，涵盖能源（ETTh1, ETTh2, ETTm1, ETTm2）、气象（Weather）、电力（ECL）、交通（Traffic）以及短期预测基准数据集M4，评估包括全监督、少样本（few-shot）与零样本（zero-shot）等场景。Time-VLM在多个指标（如MSE、MAE、SMAPE等）上均显著优于现有SOTA模型，尤其在数据稀缺条件下展现出强大的泛化能力。
    ![Time-VLM](./img/Time-VLM.png "Time-VLM")
+
+
+5. **Towards Editing Time Series**
+   - **链接**: [https://openreview.net/pdf?id=qu5NTwZtxA](https://openreview.net/pdf?id=qu5NTwZtxA)  
+   - **作者**: Baoyu Jing, Shuqi Gu, Tianyu Chen, Zhiyu Yang, Dongsheng Li, Jingrui He, Kan Ren  
+   - **单位**: ShanghaiTech University, University of Illinois at Urbana-Champaign, Microsoft Research
+   - **Abstract**: Synthesizing time series data is pivotal in modern society, aiding effective decisionmaking and ensuring privacy preservation in various scenarios. Time series are associated with various attributes, including trends, seasonality, and external information such as location. Recent research has predominantly focused on random unconditional synthesis or conditional synthesis. Nonetheless, these paradigms generate time series from scratch and are incapable of manipulating existing time series samples. This paper introduces a novel task, called Time Series Editing (TSE), to synthesize time series by manipulating existing time series. The objective is to modify the given time series according to the specified attributes while preserving other properties unchanged. This task is not trivial due to the inadequacy of data coverage and the intricate relationships between time series and their attributes. To address these issues, we introduce a novel diffusion model, called TEdit. The proposed TEdit is trained using a novel bootstrap learning algorithm that effectively enhances the coverage of the original data. It is also equipped with an innovative multi-resolution modeling and generation paradigm to capture the complex relationships between time series and their attributes. Experimental results demonstrate the efficacy of TEdit for editing specified attributes upon the existing time series data. The project page is at https://seqml.github.io/tse. 时间序列往往伴随趋势、季节性以及位置等外部信息等多种属性。近期研究主要聚焦于随机无条件合成或条件合成，但这些范式均从零开始生成序列，无法直接修改已有样本。本文提出一项新任务——时间序列编辑（TSE），即通过对现有时间序列进行操控来完成合成，目标是在保留其余特性的前提下，按指定属性修改给定序列。由于数据覆盖不足且序列与属性间关系错综复杂，该任务并不简单。为此，我们提出一种新颖的扩散模型TEdit：它采用创新的自举学习算法扩充原始数据覆盖，并辅以多分辨率建模与生成框架来捕捉序列与属性间的复杂关联。
+   - **动机**：
+    - As a result, these paradigms are unable to answer “what if” questions in time series synthesis: given a time series, what would it become if some of its attributes are modified?
+    - 我们提出一项全新任务——时间序列编辑（TSE），用于在样本层面操控时间序列。具体而言，目标是在保持其余特征不变的前提下，将输入时间序列的指定属性直接修改为目标值。
+    - **挑战**：首先，时间序列在完整复合属性空间上的分布存在偏差且覆盖不足，导致我们对某些难以观测或定义不清的属性缺乏了解。以气候数据为例，温度、湿度等属性易于观测和定义，而气压变化或局部微气候等属性则难以精确刻画。其次，不同属性在时间序列上作用的尺度各异：趋势具有全局影响，季节性则更具局部特征。如何对这些多尺度属性及其与时间序列的关联进行建模并实现精细控制，难度颇大。
+
+   ![TSE](./img/TSE.png "TSE")
+
 
