@@ -224,10 +224,60 @@
    - **单位**: ShanghaiTech University, University of Illinois at Urbana-Champaign, Microsoft Research
    - **Abstract**: Synthesizing time series data is pivotal in modern society, aiding effective decisionmaking and ensuring privacy preservation in various scenarios. Time series are associated with various attributes, including trends, seasonality, and external information such as location. Recent research has predominantly focused on random unconditional synthesis or conditional synthesis. Nonetheless, these paradigms generate time series from scratch and are incapable of manipulating existing time series samples. This paper introduces a novel task, called Time Series Editing (TSE), to synthesize time series by manipulating existing time series. The objective is to modify the given time series according to the specified attributes while preserving other properties unchanged. This task is not trivial due to the inadequacy of data coverage and the intricate relationships between time series and their attributes. To address these issues, we introduce a novel diffusion model, called TEdit. The proposed TEdit is trained using a novel bootstrap learning algorithm that effectively enhances the coverage of the original data. It is also equipped with an innovative multi-resolution modeling and generation paradigm to capture the complex relationships between time series and their attributes. Experimental results demonstrate the efficacy of TEdit for editing specified attributes upon the existing time series data. The project page is at https://seqml.github.io/tse. 时间序列往往伴随趋势、季节性以及位置等外部信息等多种属性。近期研究主要聚焦于随机无条件合成或条件合成，但这些范式均从零开始生成序列，无法直接修改已有样本。本文提出一项新任务——时间序列编辑（TSE），即通过对现有时间序列进行操控来完成合成，目标是在保留其余特性的前提下，按指定属性修改给定序列。由于数据覆盖不足且序列与属性间关系错综复杂，该任务并不简单。为此，我们提出一种新颖的扩散模型TEdit：它采用创新的自举学习算法扩充原始数据覆盖，并辅以多分辨率建模与生成框架来捕捉序列与属性间的复杂关联。
    - **动机**：
+    - 传统时间序列研究聚焦于预测或生成（从头生成新序列），但现实中诸如医疗、气象、城市监控等场景，更常见的是对已有序列进行“场景模拟”或“属性调整”——例如将春季模拟为夏季，而其他特征保持一致。当前主流方法（无条件或条件生成）均只能“重写”时间序列，**无法在已有样本上进行结构化编辑**，因而不能回答诸如“将属性从 A 改为 B 会怎样”的“反事实”问题。
     - As a result, these paradigms are unable to answer “what if” questions in time series synthesis: given a time series, what would it become if some of its attributes are modified?
     - 我们提出一项全新任务——时间序列编辑（TSE），用于在样本层面操控时间序列。具体而言，目标是在保持其余特征不变的前提下，将输入时间序列的指定属性直接修改为目标值。
-    - **挑战**：首先，时间序列在完整复合属性空间上的分布存在偏差且覆盖不足，导致我们对某些难以观测或定义不清的属性缺乏了解。以气候数据为例，温度、湿度等属性易于观测和定义，而气压变化或局部微气候等属性则难以精确刻画。其次，不同属性在时间序列上作用的尺度各异：趋势具有全局影响，季节性则更具局部特征。如何对这些多尺度属性及其与时间序列的关联进行建模并实现精细控制，难度颇大。
+    - **挑战**：**1.** 时间序列在完整复合属性空间上的分布存在偏差且覆盖不足，导致我们对某些难以观测或定义不清的属性缺乏了解。以气候数据为例，温度、湿度等属性易于观测和定义，而气压变化或局部微气候等属性则难以精确刻画。**2.** 不同属性在时间序列上作用的尺度各异：趋势具有全局影响，季节性则更具局部特征。如何对这些多尺度属性及其与时间序列的关联进行建模并实现精细控制，难度颇大。
+   - **技术路线**：
+    - 提出时间序列编辑 (TSE) 新任务，并设计基于扩散模型的 TEdit：
+      - 引入 bootstrap learning：生成伪编辑样本补充数据覆盖；
+      - 采用 多分辨率（multi-resolution）建模机制：同时捕捉全局趋势与局部结构，提升属性编辑能力。
+    - **首次系统定义时间序列编辑任务**并提供模型化方法，为未来的“反事实模拟”“属性驱动编辑”奠定基础，推动序列模拟从无条件生成迈向结构化编辑。
 
-   ![TSE](./img/TSE.png "TSE")
+   ![TSE](./img/TSE0.png "TSE")
+   ![TSE1](./img/TSE1.png "TSE1")
+   ![TSE2](./img/TSE2.png "TSE2")
 
+6. **How to Unlock Time Series Editing?**
+   - **链接**: [https://arxiv.org/pdf/2506.05276](https://arxiv.org/pdf/2506.05276) 
+   - **作者**: Hao Yu, Chu Xin Cheng, Runlong Yu, Yuyang Ye, Shiwei Tong, Zhaofeng Liu, Defu Lian  
+   - **单位**: 麦吉尔大学、加州理工学院、匹兹堡大学、罗格斯大学、IEGG（腾讯）、中国科学技术大学
+   - **Abstract**: Recent advances in time series generation have shown promise, yet controlling properties in generated sequences remains challenging. Time Series Editing (TSE)— making precise modifications while preserving temporal coherence — current methods struggle to consider multi-grain controls, including both point-level constraints and segment-level controls（**既包括点级限制，也涵盖段级控制**）. We introduce the COCKTAILEDIT framework to enable simultaneous, flexible control across different types of constraints. This framework combines two key mechanisms: a confidence-weighted control for point-wise constraints and a classifier-based control for managing statistical properties such as sums and averages over segments. Our methods achieve precise local control during the denoising inference stage while maintaining temporal coherence and integrating seamlessly, with any conditionally trained diffusion-based time series models. Extensive experiments across diverse datasets and models demonstrate its effectiveness. Our work bridges the gap between pure generative modeling and real-world time series editing needs, offering a flexible solution for human-in-the-loop time series generation and editing. The demonstration is provided for experiencing Time series editing.
+   - **动机**：
+    - 尽管扩散、GAN 等生成模型已能生成时间序列，但仍难以实现用户所需的**精细编辑能力**，尤其是同时满足“点级约束”（某时刻数值）与“段级统计目标”（平均值、总和等）。
+    - 现实应用常常需要组合不同粒度的控制条件，例如“这个时间点要达到 X，某段平均值要是多少”，但现有模型无法统一处理这种多条件约束。
+    - **挑战**：**1.** 如何在无重新训练的情况下，引入可组合的多粒度控制机制？； **2.** 如何维护编辑后的时序连贯性，并避免破坏整体数据分布？
+   - **技术路线**：
+    - 提出 CocktailEdit 框架：
+      - **点级控制**：置信度加权锚点机制，让模型在推理（去噪）阶段按设定值调整；
+      - **段级控制**：通过分类器-based guidance 控制统计量如段均值、区间和；
+      - 集成于扩散模型推断路径，无需重训练，兼容现有模型。
+    - 提供了一个灵活且易于集成的通用控制方案，真正实现了“多粒度联合控制”的编辑能力，推动时序生成从“无条件构造”走向“多约束可控编辑”。
+   ![COCKTAILEDIT0](./img/COCKTAILEDIT0.png "COCKTAILEDIT0")
+
+7. **Instruction-based Time Series Editing**
+   - **链接**: [https://arxiv.org/pdf/2506.05276](https://arxiv.org/pdf/2506.05276) 
+   - **作者**: Jiaxing Qiu, Dongliang Guo, Brynne Sullivan, Teague R. Henry, Tom Hartvigsen  
+   - **单位**: 弗吉尼亚大学，夏洛茨维尔，弗吉尼亚州，美国
+   - **Abstract**: In time series editing, we aim to modify some properties of a given time series without altering others. For example, when analyzing a hospital patient’s blood pressure, we may add a sudden early drop and observe how it impacts their future while preserving other conditions. Existing diffusion-based editors rely on rigid, predefined attribute vectors as conditions and produce all-or-nothing edits through sampling. This attribute- and sampling-based approach limits flexibility in condition format and lacks customizable control over editing strength. To overcome these limitations, we introduce Instruction-based Time Series Editing, where users specify intended edits using natural language. This allows users to express a wider range of edits in a more accessible format. We then introduce InstructTime, the first instruction-based time series editor. InstructTime takes in time series and instructions, embeds them into a shared multi-modal representation space, then decodes their embeddings to generate edited time series. By learning a structured multi-modal representation space, we can easily interpolate between embeddings to achieve varying degrees of edit. To handle local and global edits together, we propose multi-resolution encoders. In our experiments, we use synthetic and real datasets and find that InstructTime is a state-of-the-art time series editor: InstructTime achieves high-quality edits with controllable strength, can generalize to unseen instructions, and can be easily adapted to unseen conditions through few-shot learning. 在时间序列编辑中，我们的目标是在不改变其余特性的情况下，修改给定时间序列的某些属性。例如，在分析住院患者的血压时，我们可能希望在序列早期人为加入一次骤降，并观察其对后续的影响，同时保持其他条件不变。现有的基于扩散的编辑器依赖僵硬、预定义的属性向量作为条件，并通过一次性采样完成“全有或全无”的编辑。这种“属性+采样”范式限制了条件格式的灵活性，也无法让用户精细地控制编辑强度。
+   - **动机**：
+    - 尽管有了结构化编辑与多粒度控制机制，但这些方法仍以**特征或数值**条件为输入，对最终用户不够友好。现实中，像医生、分析师更倾向用自然语言（如“在早期插入轻微下降”）表达修改意图。
+    - 缺少支持**自然语言指令**驱动的时间序列编辑框架：即使已有属性可控机制，也常常要求人工构造属性向量，不符合交互习惯。
+    - **挑战**：**1.** 如何将指令文本与时间序列有效对齐，实现自然语言对编辑操作的控制？； **2.** 如何实现“编辑强度调节”与“局部 vs 全局”自由控制？
+   - **技术路线**：
+    - 提出 InstructTime 模型：
+    - 序列-指令联合建模 —— 使用编码器同时对时间序列特征与自然语言指令进行表征，并在潜在空间对齐。
+    - 条件生成解码器 —— 基于指令上下文，引导模型对序列进行局部替换或编辑，而不是重建整个序列。
+    - 编辑可控性 —— 通过在训练集中注入不同的编辑操作（如插值、去噪、替换），使模型能够泛化到未见过的指令。
+    - **优化目标**：结合序列重建误差与编辑一致性约束，确保模型在局部编辑的同时维持全局的时间一致性。
+   - 第一次引入“自然语言指令 + 可控编辑强度”的交互方式，将时序编辑推向“人机协同可交互”的新范式，很好地补充了技术层面的方法控机制。
+   ![InstructTime0](./img/InstructTime0.png "InstructTime0")
+   ![InstructTime1](./img/InstructTime1.png "InstructTime1")
+
+   ---
+   | 方向               | 背景        | 问题         | 挑战                  | 方法                | 意义               |
+| ---------------- | --------- | ---------- | ------------------- | ----------------- | ---------------- |
+| **TSE / TEdit**  | 生成侧不足编辑能力 | 无法编辑已有序列属性 | 数据覆盖与多尺度特性难建模       | 扩散＋bootstrap＋多分辨率 | 提出 TSE 任务范式为编辑奠基 |
+| **CocktailEdit** | 控制机制不丰富   | 无法多粒度组合编辑  | 无需 retraining 的可控机制 | 点级+段级控制嵌入扩散       | 引入灵活结构赋能编辑       |
+| **InstructTime** | 用户交互不够自然  | 缺乏语言驱动编辑方式 | 文本指令对齐 + 强度控制难      | 多模态 + 插值 + 多尺度编码  | 推动编辑范式向交互友好演进    |
 
