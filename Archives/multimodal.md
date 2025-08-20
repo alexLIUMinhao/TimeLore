@@ -304,13 +304,9 @@ $$\hat{x} = f_\theta(x, c)$$ 其中，$\hat{x}$ 是根据指令 $c$ 修改后的
 
 * 定义：在输入序列潜向量 $z_x$ 与条件潜向量 $z_c$ 之间进行插值：
 
-  $$
-  z_w = (1-w) \cdot z_x + w \cdot z_c
-  $$
+$$z_w = (1-w) \cdot z_x + w \cdot z_c$$
 
-  $$
-  \hat{x}_w = \Psi(z_w, z_c)
-  $$
+$$\hat{x}_w = \Psi(z_w, z_c)$$
 
 * 含义：
 
